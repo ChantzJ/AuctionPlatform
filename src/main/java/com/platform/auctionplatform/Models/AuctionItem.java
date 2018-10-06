@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class AuctionItem {
     @Id
     @Column(updatable = false, nullable = false, unique = true)
+    @GeneratedValue
     private int auctionItemId;
 
     @Column(columnDefinition = "varchar(2550)")
@@ -14,9 +15,9 @@ public class AuctionItem {
 
     private double reservePrice;
 
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "itemId")
-    private AuctionItem auctionItem;
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Item item;
 
     public int getAuctionItemId() {
         return auctionItemId;
@@ -42,11 +43,11 @@ public class AuctionItem {
         this.reservePrice = reservePrice;
     }
 
-    public AuctionItem getAuctionItem() {
-        return auctionItem;
+    public Item getAuctionItem() {
+        return item;
     }
 
-    public void setAuctionItem(AuctionItem auctionItem) {
-        this.auctionItem = auctionItem;
+    public void setAuctionItem(Item item) {
+        this.item = item;
     }
 }

@@ -6,9 +6,18 @@ import javax.persistence.*;
 @Table(name="item", schema="dbo")
 public class Item {
     @Id
-    @Column(updatable = false, nullable = false, unique = true)
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column
     private int itemId;
+
+    public Item() {
+    }
+
+    public Item(int itemId) {
+        this.itemId = itemId;
+    }
 
     @Column(columnDefinition = "varchar(2550)")
     private String description;

@@ -1,20 +1,21 @@
 package com.platform.auctionplatform.Controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.google.gson.Gson;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin
 public class PingController {
 
-    @RequestMapping(value = "/ping", method = POST)
+    @RequestMapping(value = "/ping", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody
     String ping() {
-        return ("PONG");
+        String pong = "PONG";
+
+
+
+        return new Gson().toJson("PONG");
     }
 
 }
