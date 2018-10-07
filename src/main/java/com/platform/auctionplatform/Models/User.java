@@ -1,18 +1,16 @@
 package com.platform.auctionplatform.Models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="userTable", schema="dbo")
 public class User {
     @Id
     @Column(name="userId",updatable = false, nullable = false, unique = true)
+    @GeneratedValue
     private int userId;
     @Column(name="bidderName")
-    private String name;
+    private String bidderName;
     @Column(name="maxAutoBidAmount")
     private int maxAutoBidAmount;
 
@@ -25,11 +23,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return bidderName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.bidderName = name;
     }
 
     public int getMaxAutoBidAmount() {

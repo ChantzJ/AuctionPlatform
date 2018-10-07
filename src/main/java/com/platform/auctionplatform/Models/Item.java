@@ -12,8 +12,7 @@ public class Item {
     @Column
     private int itemId;
 
-    public Item() {
-    }
+    public Item() { }
 
     public Item(int itemId) {
         this.itemId = itemId;

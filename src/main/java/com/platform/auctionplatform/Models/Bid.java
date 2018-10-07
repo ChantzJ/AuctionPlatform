@@ -17,6 +17,9 @@ public class Bid {
 
     private String bidderName;
 
+    private double bidAmount;
+
+
     public int getId() {
         return id;
     }
@@ -47,5 +50,13 @@ public class Bid {
 
     public void setBidderName(String bidderName) {
         this.bidderName = bidderName;
+    }
+
+    public double getBidAmount() {
+        return bidAmount;
+    }
+
+    public void setBidAmount(double bidAmount) {
+        this.bidAmount = bidAmount;
     }
 }

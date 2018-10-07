@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/auctionItems")
 @RestController
 public class ItemController {
-    public static final String SUBMISSION_ERRORS = "Submission errors";
 
     @Autowired
     DbContext db;
@@ -55,12 +53,7 @@ public class ItemController {
     @RequestMapping(value = "/{auctionItemId}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public String getAuctionItemByID(@PathVariable("auctionItemId") int itemID) {
 
-        //TODO
-        //Wrap in try catch to catch DBInsertionErrors
-
-
-        List<AuctionItem> au = db.toList(db.auctionItems().findAll()).stream()
-                .filter(x -> x.getAuctionItemId() == itemID).collect(Collectors.toList());
+        AuctionItem au = db.auctionItems().findOne(itemID);
 
         return new Gson().toJson(au);
     }
